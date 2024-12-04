@@ -12,7 +12,7 @@ public class Main {
 
     //methode de generation de fake data pour les Todo et Gest Todo
     public static void generateFakeData(){
-        GestTodo gestTodo = new GestTodo(5);
+        GestTodo gestTodo = new GestTodo();
         gestTodo.addTodo(new Todo("Faire les courses"));
         gestTodo.addTodo(new Todo("Faire le ménage"));
         gestTodo.addTodo(new Todo("Faire la vaisselle"));

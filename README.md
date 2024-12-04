@@ -2,6 +2,11 @@
 
 Ce projet est une simple application de gestion de tâches (TODO) en Java.  Elle permet d'ajouter, supprimer, marquer comme complétées et modifier des tâches.
 
+## Diagramme de classes
+
+![diagramme de classes]( docs/diagramme de classes.png)
+
+
 ## Fonctionnalités
 
 * **Ajouter une tâche:**  Ajouter une nouvelle tâche avec une description.

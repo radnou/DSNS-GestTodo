@@ -12,7 +12,7 @@ public class GestTodo {
      * Constructeur de la classe GestTodo.
      *
      */
-    public GestTodo(int capacity) {
+    public GestTodo() {
         this.todosList = new ArrayList<>();
     }
 
