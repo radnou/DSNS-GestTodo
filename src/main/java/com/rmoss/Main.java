@@ -1,18 +1,20 @@
 package com.rmoss;
 
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
         GestTodo gestTodo = new GestTodo();
-
+        // ajout de données
         gestTodo.addTodo(new Todo("Faire les courses"));
         gestTodo.addTodo(new Todo("Faire le ménage"));
         gestTodo.addTodo(new Todo("Faire la vaisselle"));
         gestTodo.addTodo(new Todo("Faire le lavage"));
         gestTodo.addTodo(new Todo("Faire le repassage"));
 
-        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         int choix;
 
         do {
@@ -48,6 +50,7 @@ public class Main {
                     gestTodo.markTodoAsCompletedById(idTerminer);
                     break;
                 case 4:
+                    gestTodo.displayAllTodos();
                     System.out.println("Entrez l'ID de la tâche à modifier : ");
                     long idModifier = scanner.nextLong();
                     scanner.nextLine();
