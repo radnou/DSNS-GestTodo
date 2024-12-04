@@ -1,6 +1,7 @@
 package com.rmoss;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Classe gérant une liste de tâches (todos).
@@ -10,7 +11,6 @@ public class GestTodo {
 
     /**
      * Constructeur de la classe GestTodo.
-     *
      */
     public GestTodo() {
         this.todosList = new ArrayList<>();
@@ -63,20 +63,51 @@ public class GestTodo {
         }
     }
 
+
     /**
-     * Affiche la liste des tâches dans un format tabulaire.
-     * L'affichage inclut l'ID, la description et le statut de complétion de chaque tâche.
+     * Retourne une liste de tâches filtrée selon l'état de complétion.
+     *
+     * @param completed Si `true`, retourne les tâches complétées.
+     *                  Si `false`, retourne les tâches non complétées.
+     * @return Une liste de tâches filtrée.
      */
-    public void displayTodos() {
+    private List<Todo> filterTodosByState(boolean completed) { // <-  nouvelle fonction pour filter les todos
+        List<Todo> filteredTodos = new ArrayList<>();
+        for (Todo todo : this.todosList) {
+            if (todo.isCompleted() == completed) {
+                filteredTodos.add(todo);
+            }
+        }
+        return filteredTodos;
+    }
+
+
+    /**
+     * Affiche toutes les tâches de la liste.
+     */
+    public void displayAllTodos() {
+        displayTodos(this.todosList);
+    }
+
+
+    /**
+     * Affiche une liste de tâches dans un format tabulaire.
+     *
+     * @param todos La liste des tâches à afficher.
+     */
+
+    private void displayTodos(List<Todo> todos) {
         // Trouver la longueur maximale des descriptions
         int maxDescriptionLength = 0;
-        for (Todo todo : this.todosList) {
+
+        for (Todo todo : todos) { // <-  utilisation de la liste donnée en argument pour calculer le max
             maxDescriptionLength = Math.max(maxDescriptionLength, todo.getDescription().length());
         }
 
-        // Définir une largeur minimale pour la colonne de description
+
         int minDescriptionWidth = 10;
         maxDescriptionLength = Math.max(maxDescriptionLength, minDescriptionWidth);
+
 
         String horizontalLine = "+" + "-".repeat(4) + "+" + "-".repeat(maxDescriptionLength + 2) + "+" + "-".repeat(11) + "+";
 
@@ -86,16 +117,14 @@ public class GestTodo {
         System.out.println(horizontalLine);
 
         // Tâches
-        for (Todo todo : this.todosList) {
+        for (Todo todo : todos) { // <-  utilisation de la liste donnée en argument pour l'affichage
             String completedStatus = todo.isCompleted() ? "✓" : " ";
             String description = todo.getDescription();
 
-            // Tronquer la description si elle est trop longue
             if (description.length() > maxDescriptionLength) {
                 description = description.substring(0, maxDescriptionLength - 3) + "...";
             }
 
-            // Ajuster la description pour l'alignement
             description = String.format("%-" + maxDescriptionLength + "s", description);
 
             System.out.printf("| %2d | %s | %-9s |\n", todo.getId(), description, completedStatus);
@@ -104,4 +133,20 @@ public class GestTodo {
         // Pied de page
         System.out.println(horizontalLine);
     }
+
+    /**
+     * Affiche les tâches en filtrant sur leur état de complétion.
+     *
+     * @param completed Si `true`, affiche les tâches complétées.
+     *                  Si `false`, affiche les tâches non complétées.
+     */
+    public void displayTodosFilterByState(boolean completed) {
+
+        List<Todo> filtredList = filterTodosByState(completed);  // filter les todos par etat completed
+        displayTodos(filtredList); // affichage des todos deja filtré
+
+
+    }
+
+
 }
