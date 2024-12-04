@@ -4,7 +4,7 @@ Ce projet est une simple application de gestion de tâches (TODO) en Java.  Elle
 
 ## Diagramme de classes
 
-![diagramme de classes]( docs/diagramme de classes.png)
+![diagramme de classes](https://github.com/radnou/DSNS-GestTodo/blob/e6194110ea3e0b31eba8a05899bbee286c227c85/docs/diagramme%20de%20classes.png)
 
 
 ## Fonctionnalités
