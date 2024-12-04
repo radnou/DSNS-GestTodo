@@ -22,3 +22,13 @@ Ce projet est une simple application de gestion de tâches (TODO) en Java.  Elle
 3. **Exécution:** Exécutez la commande `mvn exec:java -Dexec.mainClass="com.rmoss.Main"`.
 
 Le programme affichera ensuite la liste des tâches générées, puis les modifications successives.
+
+## Package et exécution du fichier JAR
+
+Pour exécuter le projet à partir du fichier JAR généré, suivez les étapes suivantes :
+
+1. **Compilation et packaging :** Utilisez la commande Maven `mvn clean package` pour compiler le code source et créer un fichier JAR exécutable dans le répertoire `target`.
+
+2. **Exécution du fichier JAR :** Naviguez jusqu'au répertoire `target` dans votre terminal. Exécutez ensuite le fichier JAR à l’aide de la commande : `java -jar DSNS-Gestion-Todo-1.0-SNAPSHOT.jar`
+
+Cela lancera l’application de gestion des tâches TODO.
