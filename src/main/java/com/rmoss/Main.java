@@ -4,14 +4,29 @@ package com.rmoss;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+    // simule le fonctionnement d'une application de Gestion de Todo
+        generateFakeData();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+
     }
+
+    //methode de generation de fake data pour les Todo et Gest Todo
+    public static void generateFakeData(){
+        GestTodo gestTodo = new GestTodo(5);
+        gestTodo.addTodo(new Todo("Faire les courses"));
+        gestTodo.addTodo(new Todo("Faire le ménage"));
+        gestTodo.addTodo(new Todo("Faire la vaisselle"));
+        gestTodo.addTodo(new Todo("Faire le lavage"));
+        gestTodo.addTodo(new Todo("Faire le repassage"));
+        gestTodo.displayTodos();
+        gestTodo.markTodoAsCompletedById(1L);
+        gestTodo.markTodoAsCompletedById(3L);
+        gestTodo.markTodoAsCompletedById(5L);
+        System.out.println("Apres avoir marqué les todos avec id 1, 3 et 5  comme complete");
+        gestTodo.displayTodos();
+        gestTodo.removeTodoById(1L);
+        System.out.println("Apres avoir supprimer le todo avec id 1");
+        gestTodo.displayTodos();
+    }
+
 }
